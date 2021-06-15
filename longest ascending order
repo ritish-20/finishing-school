@@ -1,0 +1,72 @@
+/*There are some balls in a row, the balls are numbered from -1000 to +1000.
+You need do arrange the balls in a such way that, 
+the numbers on the balls in the row, should be in ascending order.
+You are allowed to remove few balls in the row, 
+but you are not allowed to shuffle their position.
+
+Given an set of integers, numbers printed on the balls. 
+Your task is to find the length of longest ascending arrangement of the numbered balls.
+
+Input Format:
+-------------
+Space separated integers, numbers printed on the balls in a row.
+
+Output Format:
+--------------
+Print an integer, length of longest ascending arrangement of the numbered balls.
+
+Sample Input: 
+----------------
+8 //size of array
+10 9 2 5 3 7 101 18
+
+Sample Output: 
+------------------
+4 
+Explanation: 
+-------------
+The longest increasing subsequence is [2,3,7,101], therefore the length is 4. 
+*/
+import java.util.*;
+class Demo
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] a=new int[n];
+        int[] b=new int[n];
+        int g=0;
+        for(int i=0;i<n;i++)
+        {
+            a[i]=sc.nextInt();
+        }
+        for(int i=n-1;i>=0;i--)
+        {
+            int d=a[i];
+            int c=1;
+            for(int j=i-1;j>=0;j--)
+            {
+                if(a[j]<d)
+               {
+                   c++;
+                   d=a[j];
+               }
+            }
+            b[g]=c;
+            g++;
+        }
+        int max=0;
+        for(int i=0;i<g;i++)
+        {
+            if(b[i]>max)
+            {
+                max=b[i];
+            }
+        }
+        System.out.println(max);
+    }
+}
+
+
+
