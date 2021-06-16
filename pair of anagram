@@ -1,0 +1,76 @@
+/*
+There are pair of words namely W1 and W2 with a limited of word range, 
+Create a method to return a true value if W2 contains the anagram of W1. 
+In additional, one of the anagram of first word is the substring of the second word.
+
+Your task is to implement the Solution class, and implement a method in it, 
+	- public boolean checkSubstring(String w1, String w2){}.
+
+Input Format:
+-------------
+Two space separated words w1 and w2, consist of lowercase letters only.
+
+Output Format:
+--------------
+Print a boolean value, if W2 contains the anagram of W1 or not.
+
+
+Sample Input-1:
+---------------
+abbcbb abbbabbcb
+
+Sample Output-1:
+----------------
+true
+
+Sample Input-2:
+---------------
+abbcbbc abbbabbcb
+
+Sample Output-2:
+----------------
+false
+
+*/
+import java.util.*;
+class Demo
+{
+    public static void main(String args[])
+    {
+        Scanner sc= new Scanner(System.in);
+        String str1=sc.next();
+        String str2=sc.next();
+        char[] str3=new char[str1.length()];
+        for(int i=0;i<str1.length();i++)
+        {
+            str3[i]=str1.charAt(i);
+        }
+        Arrays.sort(str3);
+        String x=String.valueOf(str3);
+        int t=str1.length();
+        for(int i=0;i<(str2.length()-str1.length()+1);i++)
+        {
+            char[] str4=new char[str1.length()];
+            int q=0;
+            for(int j=i;j<t;j++)
+            {
+                str4[q]=str2.charAt(j);
+                q++;
+            }
+            Arrays.sort(str4);
+            String y=String.valueOf(str4);
+            if(t<str2.length())
+            {
+                t++;
+            }
+            if(x.equals(y))
+            {
+                System.out.println(true);
+                System.exit(0);
+            }
+        }
+        System.out.println(false);
+    }
+}
+
+
